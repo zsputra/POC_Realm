@@ -4,6 +4,7 @@ import 'package:pockets/common/injector_config.dart';
 import 'package:pockets/common/realm_wrapper.dart';
 import 'package:pockets/common/routes.dart';
 import 'package:pockets/presentation/journey/login/bloc/login_bloc.dart';
+import 'package:pockets/presentation/journey/login/login_screen.dart';
 
 Future<void> main() async {
   Injector.setup();
@@ -75,14 +76,16 @@ class _MyHomePageState extends State<MyHomePage> {
                 Text(
                   'Realm Pocket List Applications',
                 ),
+                LoginScreen(),
               ],
             ),
           ),
-          floatingActionButton: FloatingActionButton(
-            onPressed: _onPress,
-            tooltip: 'Login',
-            child: const Text('Login'),
-          )), // This trailing comma makes auto-formatting nicer for build methods.
+          // floatingActionButton: FloatingActionButton(
+          //   onPressed: _onPress,
+          //   tooltip: 'Login',
+          //   child: const Text('Login'),
+          // ),
+          ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

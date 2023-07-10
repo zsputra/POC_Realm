@@ -34,7 +34,19 @@ class _PocketListScreenState extends State<PocketListScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('Pocket List')), body: _buildBody());
+      appBar: AppBar(title: const Text('Pocket List'), actions: [
+        IconButton(
+          onPressed: () {
+            _pocketListBloc.add(LoadPocketListEvent());
+          },
+          icon: const Icon(Icons.refresh),
+        )
+      ]),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: _buildBody(),
+      ),
+    );
   }
 
   Widget _buildBody() {
@@ -44,7 +56,7 @@ class _PocketListScreenState extends State<PocketListScreen>
         if (state is PocketListLoaded) {
           return _buildGridPockets(state);
         }
-        return const CircularProgressIndicator();
+        return const Center(child: CircularProgressIndicator());
       },
     );
   }
@@ -88,5 +100,4 @@ class _PocketListScreenState extends State<PocketListScreen>
           }),
     );
   }
-
 }

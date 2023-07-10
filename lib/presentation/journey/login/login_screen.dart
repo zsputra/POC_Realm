@@ -28,15 +28,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Login'),
-      ),
-      body: BlocListener<LoginBloc, LoginState>(
+    return Container(
+      padding: const EdgeInsets.all(8.0),
+      child: BlocListener<LoginBloc, LoginState>(
         bloc: Injector.resolve!<LoginBloc>(),
         listener: (context, state) {
           if (state is LoginSucceed) {
-            Navigator.pushReplacementNamed(
+            Navigator.pushNamed(
               context,
               PocketRouteNames.pocketList,
             );
